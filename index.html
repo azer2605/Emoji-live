@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salom Dunyo - Turli Hil Emoji</title>
+    <style>
+        /* Umumiy uslublar */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Tugma uslubi */
+        .button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 60px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animatsiyali matn uslubi */
+        .button span {
+            position: absolute;
+            animation: bounce 1s infinite alternate;
+        }
+
+        /* Tebranish animatsiyasi */
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Emoji uslubi */
+        .emoji {
+            position: absolute;
+            top: -50px;
+            font-size: 24px;
+            animation: fall linear infinite;
+        }
+
+        /* Emolarni tepadan tushirish animatsiyasi */
+        @keyframes fall {
+            0% {
+                top: -50px;
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tugma va animatsiyali matn -->
+    <button class="button">
+        <span>Salom dunyo</span>
+    </button>
+
+    <!-- Emoji yaratish uchun JavaScript -->
+    <script>
+        function createEmoji() {
+            const emojis = ['❤️', '😂', '😍', '😊', '😎', '🥳', '😆', '😁', '🤗', '🙌'];
+            const emoji = document.createElement('div');
+            emoji.classList.add('emoji');
+            emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDuration = Math.random() * 3 + 2 + 's'; // Animatsiya davomiyligi
+            document.body.appendChild(emoji);
+
+            // Emolarni ekrandan olib tashlash
+            setTimeout(() => {
+                emoji.remove();
+            }, 5000); // 5 soniyadan keyin olib tashlash
+        }
+
+        // Har 500msda bitta emoji yaratish
+        setInterval(createEmoji, 500);
+    </script>
+
+</body>
+</html>
